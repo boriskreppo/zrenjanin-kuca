@@ -22,25 +22,30 @@ export default async function handler(req, res) {
         const data = await response.json();
 
         if (data.error) {
-            return res.status(400).send(`
-                <script>
-                    window.opener.postMessage(
-                        'authorization:github:error:${data.error}',
-                        '*'
-                    );
-                </script>
-            `);
+            const errMsg = `authorization:github:error:${JSON.stringify({ message: data.error })}`;
+            return res.send(`<!DOCTYPE html><html><body><script>
+                (function() {
+                    function receiveMessage(e) {
+                        window.opener.postMessage('${errMsg}', e.origin);
+                    }
+                    window.addEventListener('message', receiveMessage, false);
+                    window.opener.postMessage('authorizing:github', '*');
+                })();
+            </script></body></html>`);
         }
 
-        res.send(`
-            <script>
-                window.opener.postMessage(
-                    'authorization:github:success:${JSON.stringify({ token: data.access_token, provider: 'github' })}',
-                    '*'
-                );
-                window.close();
-            </script>
-        `);
+        const token = data.access_token;
+        const msg = `authorization:github:success:${JSON.stringify({ token, provider: 'github' })}`;
+        res.send(`<!DOCTYPE html><html><body><script>
+            (function() {
+                function receiveMessage(e) {
+                    window.opener.postMessage('${msg}', e.origin);
+                    window.close();
+                }
+                window.addEventListener('message', receiveMessage, false);
+                window.opener.postMessage('authorizing:github', '*');
+            })();
+        </script></body></html>`);
     } catch (err) {
         res.status(500).send(`
             <script>
