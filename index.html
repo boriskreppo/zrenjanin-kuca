@@ -154,12 +154,6 @@
                 </div>
             </div>
             <div class="gallery-images">
-                <img class="img-1-icon" src="./Assets/Images/Img-1-1.png" alt="Fotografija enterijera kuće — pogled 1">
-                <img class="img-2-icon" src="./Assets/Images/Img-2.png" alt="Fotografija enterijera kuće — pogled 2">
-                <img class="img-1-icon" src="./Assets/Images/Img-1-1.png" alt="Fotografija enterijera kuće — pogled 3">
-                <img class="img-2-icon" src="./Assets/Images/Img-2.png" alt="Fotografija enterijera kuće — pogled 4">
-                <img class="img-1-icon" src="./Assets/Images/Img-1-1.png" alt="Fotografija enterijera kuće — pogled 5">
-                <img class="img-2-icon" src="./Assets/Images/Img-2.png" alt="Fotografija enterijera kuće — pogled 6">
             </div>
             <div class="gallery-footer">
                 <div class="gallery-controls">
@@ -367,56 +361,75 @@
             const track = document.querySelector('.gallery-images');
             if (!track) return;
 
-            // Kloniraj slike za infinite loop
             const originals = Array.from(track.querySelectorAll('img'));
-            originals.forEach(img => track.appendChild(img.cloneNode(true)));
-            originals.forEach(img => track.insertBefore(img.cloneNode(true), track.firstChild));
+            if (!originals.length) return;
 
-            // Sačekaj da se slike renderuju pa izmeri pravu širinu
-            const getItemWidth = () => {
-                const img = track.querySelector('img');
-                const next = img.nextElementSibling;
-                if (next) return next.getBoundingClientRect().left - img.getBoundingClientRect().left;
-                return img.offsetWidth + 8;
-            };
+            function setupCarousel() {
+                // Kloniraj slike za infinite loop
+                originals.forEach(img => track.appendChild(img.cloneNode(true)));
+                originals.forEach(img => track.insertBefore(img.cloneNode(true), track.firstChild));
 
-            const setStart = () => { track.scrollLeft = getItemWidth() * originals.length; };
-            requestAnimationFrame(setStart);
+                const getItemWidth = () => {
+                    const imgs = track.querySelectorAll('img');
+                    if (imgs.length < 2) return imgs[0].offsetWidth + 8;
+                    return imgs[1].getBoundingClientRect().left - imgs[0].getBoundingClientRect().left;
+                };
 
-            // Infinite loop na scroll
-            track.addEventListener('scroll', () => {
-                const w = getItemWidth() * originals.length;
-                if (track.scrollLeft < w * 0.25) {
-                    track.scrollLeft += w;
-                } else if (track.scrollLeft > w * 1.75) {
-                    track.scrollLeft -= w;
+                track.scrollLeft = getItemWidth() * originals.length;
+
+                track.addEventListener('scroll', () => {
+                    const w = getItemWidth() * originals.length;
+                    if (track.scrollLeft < getItemWidth()) {
+                        track.scrollLeft += w;
+                    } else if (track.scrollLeft >= w * 2 - getItemWidth()) {
+                        track.scrollLeft -= w;
+                    }
+                }, { passive: true });
+
+                // Drag scroll
+                let isDown = false, startX, scrollLeft;
+                track.addEventListener('mousedown', e => {
+                    isDown = true;
+                    track.classList.add('is-dragging');
+                    startX = e.pageX - track.offsetLeft;
+                    scrollLeft = track.scrollLeft;
+                });
+                track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('is-dragging'); });
+                track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('is-dragging'); });
+                track.addEventListener('mousemove', e => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - track.offsetLeft;
+                    track.scrollLeft = scrollLeft - (x - startX);
+                });
+
+                // Strelice
+                document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
+                    track.scrollBy({ left: getItemWidth(), behavior: 'smooth' });
+                });
+                document.querySelector('.arrow-back-btn').addEventListener('click', () => {
+                    track.scrollBy({ left: -getItemWidth(), behavior: 'smooth' });
+                });
+            }
+
+            // Sačekaj da se sve slike učitaju pa tek onda kloniraj
+            let loaded = 0;
+            originals.forEach(img => {
+                if (img.complete) {
+                    loaded++;
+                    if (loaded === originals.length) setupCarousel();
+                } else {
+                    img.addEventListener('load', () => {
+                        loaded++;
+                        if (loaded === originals.length) setupCarousel();
+                    });
+                    img.addEventListener('error', () => {
+                        loaded++;
+                        if (loaded === originals.length) setupCarousel();
+                    });
                 }
-            }, { passive: true });
-
-            // Drag scroll
-            let isDown = false, startX, scrollLeft;
-            track.addEventListener('mousedown', e => {
-                isDown = true;
-                track.classList.add('is-dragging');
-                startX = e.pageX - track.offsetLeft;
-                scrollLeft = track.scrollLeft;
-            });
-            track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('is-dragging'); });
-            track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('is-dragging'); });
-            track.addEventListener('mousemove', e => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - track.offsetLeft;
-                track.scrollLeft = scrollLeft - (x - startX);
             });
 
-            // Strelice
-            document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
-                track.scrollBy({ left: getItemWidth(), behavior: 'smooth' });
-            });
-            document.querySelector('.arrow-back-btn').addEventListener('click', () => {
-                track.scrollBy({ left: -getItemWidth(), behavior: 'smooth' });
-            });
         }
 
         /* MOBILE — gallery dots */
