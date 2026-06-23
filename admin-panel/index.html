@@ -264,6 +264,25 @@
       border-radius: var(--radius);
       overflow: hidden;
       border: 1.5px solid var(--beige-light);
+      cursor: grab;
+      transition: opacity 0.2s, box-shadow 0.2s;
+    }
+
+    .gallery-item.dragging {
+      opacity: 0.4;
+    }
+
+    .gallery-item.drag-over-item {
+      box-shadow: 0 0 0 2px var(--dark);
+    }
+
+    .drag-handle {
+      text-align: center;
+      font-size: 18px;
+      color: var(--beige);
+      padding: 4px 0 2px;
+      cursor: grab;
+      user-select: none;
     }
 
     .gallery-item img {
@@ -661,7 +680,8 @@ function renderGallery(fileData, cfg, lang) {
   let gridItems = '';
   slike.forEach((slika, i) => {
     gridItems += `
-      <div class="gallery-item" data-index="${i}">
+      <div class="gallery-item" data-index="${i}" draggable="true">
+        <div class="drag-handle" title="Prevuci za promenu redosleda">⠿</div>
         <img src="${slika.src}" alt="${slika.alt || ''}" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'160\\' height=\\'120\\'><rect fill=\\'%23bfae9f\\' width=\\'160\\' height=\\'120\\'/></svg>'">
         <div class="gallery-item-info">
           <input type="text" class="alt-input" data-index="${i}" value="${(slika.alt || '').replace(/"/g, '&quot;')}" placeholder="Opis slike (alt)">
@@ -713,6 +733,33 @@ function bindGallery(fileData, lang) {
     btn.addEventListener('click', () => {
       const i = parseInt(btn.dataset.index);
       fileData.content.slike.splice(i, 1);
+      renderSection(state.currentSection, state.currentLang);
+    });
+  });
+
+  // Drag & drop redosled
+  let dragSrcIndex = null;
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('dragstart', () => {
+      dragSrcIndex = parseInt(item.dataset.index);
+      item.classList.add('dragging');
+    });
+    item.addEventListener('dragend', () => {
+      item.classList.remove('dragging');
+      document.querySelectorAll('.gallery-item').forEach(i => i.classList.remove('drag-over-item'));
+    });
+    item.addEventListener('dragover', e => {
+      e.preventDefault();
+      document.querySelectorAll('.gallery-item').forEach(i => i.classList.remove('drag-over-item'));
+      item.classList.add('drag-over-item');
+    });
+    item.addEventListener('drop', e => {
+      e.preventDefault();
+      const targetIndex = parseInt(item.dataset.index);
+      if (dragSrcIndex === null || dragSrcIndex === targetIndex) return;
+      const slike = fileData.content.slike;
+      const moved = slike.splice(dragSrcIndex, 1)[0];
+      slike.splice(targetIndex, 0, moved);
       renderSection(state.currentSection, state.currentLang);
     });
   });
