@@ -739,17 +739,9 @@ img {
 }
 
 .stats-title8,
-.stats-title9 {
-    font-size: clamp(20px, 2.5vw, 32px);
-    letter-spacing: -0.03em;
-    line-height: 1;
-    font-weight: 800;
-    color: #3f2419;
-    margin-top: 4px;
-}
-
+.stats-title9,
 .stats-title10 {
-    font-size: clamp(14px, 1.5vw, 24px);
+    font-size: clamp(20px, 2.5vw, 32px);
     letter-spacing: -0.03em;
     line-height: 1;
     font-weight: 800;
