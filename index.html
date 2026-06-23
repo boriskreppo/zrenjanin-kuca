@@ -151,14 +151,6 @@
                 <h2 class="gallery-title" data-cms="galerija.title"></h2>
                 <div class="gallery-header-right">
                     <p class="body2" data-cms="galerija.body"></p>
-                    <div class="gallery-controls">
-                        <button class="arrow-back-btn" aria-label="Prethodna slika">
-                            <img class="arrow-back-icon" src="./Assets/Icons/arrow-back.svg" alt="">
-                        </button>
-                        <button class="arrow-forward-btn" aria-label="Sledeća slika">
-                            <img class="arrow-forward-icon" src="./Assets/Icons/arrow-forward.svg" alt="">
-                        </button>
-                    </div>
                 </div>
             </div>
             <div class="gallery-images">
@@ -168,6 +160,16 @@
                 <img class="img-2-icon" src="./Assets/Images/Img-2.png" alt="Fotografija enterijera kuće — pogled 4">
                 <img class="img-1-icon" src="./Assets/Images/Img-1-1.png" alt="Fotografija enterijera kuće — pogled 5">
                 <img class="img-2-icon" src="./Assets/Images/Img-2.png" alt="Fotografija enterijera kuće — pogled 6">
+            </div>
+            <div class="gallery-footer">
+                <div class="gallery-controls">
+                    <button class="arrow-back-btn" aria-label="Prethodna slika">
+                        <img class="arrow-back-icon" src="./Assets/Icons/arrow-back.svg" alt="">
+                    </button>
+                    <button class="arrow-forward-btn" aria-label="Sledeća slika">
+                        <img class="arrow-forward-icon" src="./Assets/Icons/arrow-forward.svg" alt="">
+                    </button>
+                </div>
             </div>
             <div class="gallery-dots" aria-hidden="true"></div>
         </section>
@@ -249,7 +251,7 @@
                                 <div class="stats-label13">Broj manifestacija</div>
                                 <div class="stats-title9" data-cms="lokacija.manifestacije"></div>
                                 <div class="stats-label14">Vebsajt</div>
-                                <div class="stats-title10" data-cms="lokacija.website"></div>
+                                <a href="https://www.zrenjanin.rs" target="_blank" rel="noopener" class="stats-title10" data-cms="lokacija.website"></a>
                                 <img class="img-grb-icon" src="./Assets/Images/Img-grb.png" alt="Grb Zrenjanina">
                             </div>
                             <img class="loc-card" src="./Assets/Images/Img-11.png" alt="Zrenjanin — fotografija 2">
@@ -357,33 +359,37 @@
         /* =============================================
            GALERIJA — dodaj / ukloni fotografije ovde
            ============================================= */
-        const images = [
-            './Assets/Images/Img-2.png',
-            './Assets/Images/Img-1-1.png',
-        ];
+        // Galerija — drag scroll + strelice
+        (function() {
+            const track = document.querySelector('.gallery-images');
+            if (!track) return;
 
-        let current = 0;
-        const img1 = document.querySelector('.img-1-icon');
-        const img2 = document.querySelector('.img-2-icon');
+            // Drag scroll
+            let isDown = false, startX, scrollLeft;
+            track.addEventListener('mousedown', e => {
+                isDown = true;
+                track.classList.add('is-dragging');
+                startX = e.pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+            });
+            track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('is-dragging'); });
+            track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('is-dragging'); });
+            track.addEventListener('mousemove', e => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                track.scrollLeft = scrollLeft - (x - startX);
+            });
 
-        function getImg(index) {
-            return images[((index % images.length) + images.length) % images.length];
-        }
-
-        function updateGallery() {
-            img1.src = getImg(current);
-            img2.src = getImg(current + 1);
-        }
-
-        document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
-            current = (current + 1) % images.length;
-            updateGallery();
-        });
-
-        document.querySelector('.arrow-back-btn').addEventListener('click', () => {
-            current = ((current - 1) + images.length) % images.length;
-            updateGallery();
-        });
+            // Strelice
+            const imgWidth = () => track.querySelector('img').offsetWidth + parseInt(getComputedStyle(track).gap || 8);
+            document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
+                track.scrollBy({ left: imgWidth(), behavior: 'smooth' });
+            });
+            document.querySelector('.arrow-back-btn').addEventListener('click', () => {
+                track.scrollBy({ left: -imgWidth(), behavior: 'smooth' });
+            });
+        })();
 
         /* MOBILE — gallery dots */
         (function() {

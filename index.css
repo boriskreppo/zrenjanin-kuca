@@ -357,6 +357,17 @@ img {
     justify-content: space-between;
     padding: clamp(16px, 2vw, 28px) clamp(16px, 2vw, 32px);
     border-bottom: 1px solid #bfae9f;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: default;
+}
+
+.stats-col-left-top:hover {
+    background-color: #3f2419;
+    color: #fff;
+}
+
+.stats-col-left-top:hover .stats-title-large {
+    color: #fff;
 }
 
 .stats-col-left-bottom {
@@ -365,6 +376,17 @@ img {
     flex-direction: column;
     justify-content: space-between;
     padding: clamp(16px, 2vw, 28px) clamp(16px, 2vw, 32px);
+    transition: background-color 0.2s, color 0.2s;
+    cursor: default;
+}
+
+.stats-col-left-bottom:hover {
+    background-color: #3f2419;
+    color: #fff;
+}
+
+.stats-col-left-bottom:hover .stats-title-large {
+    color: #fff;
 }
 
 /* Desna kolona stats-a: gornji deo (label+broj) + donji highlight blok */
@@ -379,6 +401,17 @@ img {
     flex-direction: column;
     justify-content: space-between;
     padding: clamp(16px, 2vw, 28px) clamp(16px, 2vw, 32px);
+    transition: background-color 0.2s, color 0.2s;
+    cursor: default;
+}
+
+.stats-col-right-top:hover {
+    background-color: #3f2419;
+    color: #fff;
+}
+
+.stats-col-right-top:hover .stats-title-large {
+    color: #fff;
 }
 
 .stats-col-right-bottom {
@@ -389,6 +422,11 @@ img {
     padding: clamp(16px, 2vw, 28px) clamp(16px, 2vw, 32px);
     background-color: #3f2419;
     color: #fff;
+    transition: background-color 0.2s;
+}
+
+.stats-col-right-bottom:hover {
+    background-color: #624d3c;
 }
 
 .stats-label7,
@@ -459,6 +497,14 @@ img {
     padding-bottom: clamp(6px, 1vw, 14px);
 }
 
+.gallery-footer {
+    display: flex;
+    align-items: center;
+    padding-inline: var(--grid-padding);
+    padding-top: clamp(12px, 1.5vw, 20px);
+    padding-bottom: clamp(20px, 2.5vw, 36px);
+}
+
 .section-3 .body2 {
     font-size: clamp(13px, 1.2vw, 16px);
     line-height: 1.5;
@@ -504,8 +550,19 @@ img {
 .gallery-images {
     display: flex;
     gap: clamp(4px, 0.5vw, 8px);
-    height: 836px;
-    overflow: hidden;
+    height: 627px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.gallery-images::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-images.is-dragging {
+    cursor: grabbing;
 }
 
 .img-1-icon,
@@ -515,6 +572,8 @@ img {
     display: block;
     object-fit: none;
     flex-shrink: 0;
+    user-select: none;
+    pointer-events: none;
 }
 
 /* =============================================
@@ -683,19 +742,21 @@ img {
     pointer-events: none;
 }
 
-/* Outer grid: leva kolona (naslov) | desna kolona (sve ostalo) */
+/* Outer layout: naslov | desna kolona (kartice gore, tekst dole) */
 .section-5-inner {
     position: relative;
     z-index: 2;
     padding-left: var(--grid-padding);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
     column-gap: 0;
     align-items: start;
 }
 
 .title4 {
     grid-column: 1;
+    grid-row: 1;
     font-size: clamp(48px, 7vw, 120px);
     letter-spacing: -0.03em;
     line-height: 1;
@@ -704,9 +765,10 @@ img {
     padding-top: clamp(40px, 6vw, 100px);
 }
 
-/* Desna kolona — flex kolona */
+/* Desna kolona — kartice gore */
 .section-5-right {
     grid-column: 2;
+    grid-row: 1;
     display: flex;
     flex-direction: column;
     gap: clamp(16px, 2vw, 28px);
@@ -780,6 +842,11 @@ img {
     font-weight: 800;
     color: #3f2419;
     margin-top: 4px;
+    text-decoration: none;
+}
+
+.stats-title10:hover {
+    text-decoration: underline;
 }
 
 .img-grb-icon {
@@ -790,13 +857,16 @@ img {
     align-self: flex-end;
 }
 
-/* Donji tekst i CTA — poravnati sa levom ivicom karusela */
+/* Donji tekst i CTA — ispod kartica u desnoj koloni */
 .section-5-bottom {
     grid-column: 2;
+    grid-row: 2;
     display: flex;
     flex-direction: column;
     gap: clamp(12px, 1.5vw, 20px);
-    margin-left: -93px;
+    padding-right: var(--grid-padding);
+    padding-top: clamp(24px, 3vw, 48px);
+    padding-bottom: clamp(24px, 3vw, 48px);
 }
 
 /* Strelice — desno poravnate */
