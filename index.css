@@ -420,13 +420,17 @@ img {
     flex-direction: column;
     justify-content: space-between;
     padding: clamp(16px, 2vw, 28px) clamp(16px, 2vw, 32px);
-    background-color: #3f2419;
-    color: #fff;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: default;
 }
 
 .stats-col-right-bottom:hover {
-    background-color: #624d3c;
+    background-color: #3f2419;
+    color: #fff;
+}
+
+.stats-col-right-bottom:hover .stats-title-large {
+    color: #fff;
 }
 
 .stats-label7,
@@ -453,9 +457,6 @@ img {
     align-self: flex-end;
 }
 
-.stats-col-right-bottom .stats-title-large {
-    color: #fff;
-}
 
 /* =============================================
    SECTION 3 — Galerija
@@ -500,6 +501,7 @@ img {
 .gallery-footer {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     padding-inline: var(--grid-padding);
     padding-top: clamp(12px, 1.5vw, 20px);
     padding-bottom: clamp(20px, 2.5vw, 36px);
@@ -867,6 +869,7 @@ img {
     padding-right: var(--grid-padding);
     padding-top: clamp(24px, 3vw, 48px);
     padding-bottom: clamp(24px, 3vw, 48px);
+    margin-left: -93px;
 }
 
 /* Strelice — desno poravnate */
