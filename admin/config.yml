@@ -2,9 +2,8 @@ backend:
   name: github
   repo: boriskreppo/zrenjanin-kuca
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
-  site_id: dbcdedb1-cab3-45bb-8c5f-5a77e28c19a0
+  base_url: https://zrenjanin-kuca.vercel.app
+  auth_endpoint: api/auth
 
 media_folder: "Assets/Images"
 public_folder: "/Assets/Images"
