@@ -2,7 +2,7 @@ backend:
   name: github
   repo: boriskreppo/zrenjanin-kuca
   branch: main
-  base_url: https://api.netlify.com
+  base_url: https://melodious-choux-c638e7.netlify.app
   auth_endpoint: auth
 
 media_folder: "Assets/Images"
