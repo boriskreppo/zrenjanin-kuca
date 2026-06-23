@@ -446,9 +446,6 @@ img {
     font-weight: 800;
 }
 
-.stats-col-right-bottom .stats-label9 {
-    color: #fff;
-}
 
 .stats-title-large {
     font-size: clamp(48px, 7vw, 96px);
