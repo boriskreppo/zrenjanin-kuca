@@ -42,7 +42,7 @@
             </nav>
             <a href="tel:+38163516065" class="burger-cta">+381 63 516 065</a>
             <div class="burger-lang">
-                <b class="rs">RS / </b><a href="./en/index.html" class="en">EN</a>
+                <span class="lang-active">RS</span><span class="lang-sep"> / </span><a href="./en/index.html" class="lang-inactive">EN</a>
             </div>
         </div>
 
@@ -55,8 +55,7 @@
             <a href="#lokacija" class="navigation-item-4">Lokacija</a>
             <a href="tel:+38163516065" class="nav-call">+381 63 516 065</a>
             <div class="language-switcher">
-                <b class="rs">RS / </b>
-                <a href="./en/index.html" class="en">EN</a>
+                <span class="lang-active">RS</span><span class="lang-sep"> / </span><a href="./en/index.html" class="lang-inactive">EN</a>
             </div>
             <button class="nav-hamburger" aria-label="Otvori meni" onclick="document.getElementById('burger-menu').classList.add('is-open');document.body.style.overflow='hidden';">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:32px;height:32px;flex-shrink:0;">
@@ -70,8 +69,18 @@
         <!-- HERO -->
         <section class="hero" id="hero" aria-label="Hero sekcija">
             <div class="hero-image-wrapper">
-                <img class="hero-bg-icon" src="./Assets/Images/Hero-bg.png"
-                    alt="Pogled na luksuznu salonsku kuću u Zrenjaninu">
+                <div class="hero-carousel">
+                    <img class="hero-slide active" src="./Assets/Images/Hero-bg.png" alt="Pogled na luksuznu salonsku kuću u Zrenjaninu">
+                    <img class="hero-slide" src="./Assets/Images/Img-1-1.png" alt="Enterijer kuće">
+                    <img class="hero-slide" src="./Assets/Images/Img-2.png" alt="Enterijer kuće">
+                    <img class="hero-slide" src="./Assets/Images/Img.png" alt="Detalj kuće">
+                </div>
+                <div class="hero-dots">
+                    <button class="hero-dot active" data-index="0" aria-label="Slika 1"></button>
+                    <button class="hero-dot" data-index="1" aria-label="Slika 2"></button>
+                    <button class="hero-dot" data-index="2" aria-label="Slika 3"></button>
+                    <button class="hero-dot" data-index="3" aria-label="Slika 4"></button>
+                </div>
                 <h1 class="hero-title" data-cms="hero.title"></h1>
                 <p class="hero-body" data-cms="hero.body"></p>
             </div>
@@ -303,7 +312,7 @@
 
             Promise.all(
                 dataFiles.map(name =>
-                    fetch('https://raw.githubusercontent.com/boriskreppo/zrenjanin-kuca/main/_data/' + name + '.json')
+                    fetch('https://raw.githubusercontent.com/boriskreppo/zrenjanin-kuca/main/_data/' + name + '.json?t=' + Date.now())
                         .then(r => r.json())
                         .then(json => { data[name] = json; })
                 )
@@ -477,6 +486,27 @@
                 link.addEventListener('click', closeMenu);
             });
             menu.querySelector('.burger-cta').addEventListener('click', closeMenu);
+        })();
+
+        // Hero karusel
+        (function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            let current = 0;
+
+            function goTo(index) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = (index + slides.length) % slides.length;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
+            });
+
+            setInterval(() => goTo(current + 1), 2000);
         })();
     </script>
 </body>
