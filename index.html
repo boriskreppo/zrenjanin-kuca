@@ -304,7 +304,7 @@
 
             Promise.all(
                 dataFiles.map(name =>
-                    fetch('https://raw.githubusercontent.com/boriskreppo/zrenjanin-kuca/main/_data/' + name + '.json?t=' + Date.now())
+                    fetch('https://raw.githubusercontent.com/boriskreppo/zrenjanin-kuca/main/_data/' + name + '.json?t=' + Date.now(), { cache: 'no-store' })
                         .then(r => r.json())
                         .then(json => { data[name] = json; })
                 )
@@ -326,13 +326,16 @@
 
                 // Galerija slike
                 if (data.galerija && data.galerija.slike) {
-                    const imgs = document.querySelectorAll('.gallery-images img');
-                    data.galerija.slike.forEach((slika, i) => {
-                        if (imgs[i]) {
-                            imgs[i].src = slika.src;
-                            imgs[i].alt = slika.alt;
-                        }
+                    const track = document.querySelector('.gallery-images');
+                    track.innerHTML = '';
+                    data.galerija.slike.forEach(slika => {
+                        const img = document.createElement('img');
+                        img.className = 'img-1-icon';
+                        img.src = slika.src;
+                        img.alt = slika.alt || '';
+                        track.appendChild(img);
                     });
+                    initGallery();
                 }
 
                 // Hero karusel iz JSON-a
@@ -360,7 +363,7 @@
            GALERIJA — dodaj / ukloni fotografije ovde
            ============================================= */
         // Galerija — infinite scroll + drag + strelice
-        (function() {
+        function initGallery() {
             const track = document.querySelector('.gallery-images');
             if (!track) return;
 
@@ -407,7 +410,7 @@
             document.querySelector('.arrow-back-btn').addEventListener('click', () => {
                 track.scrollBy({ left: -itemWidth(), behavior: 'smooth' });
             });
-        })();
+        }
 
         /* MOBILE — gallery dots */
         (function() {

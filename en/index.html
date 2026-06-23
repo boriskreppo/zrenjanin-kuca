@@ -267,7 +267,7 @@
 
             Promise.all(
                 dataFiles.map(name =>
-                    fetch('https://raw.githubusercontent.com/boriskreppo/zrenjanin-kuca/main/_data/en/' + name + '.json?t=' + Date.now())
+                    fetch('https://raw.githubusercontent.com/boriskreppo/zrenjanin-kuca/main/_data/en/' + name + '.json?t=' + Date.now(), { cache: 'no-store' })
                         .then(r => r.json())
                         .then(json => { data[name] = json; })
                 )
@@ -285,14 +285,18 @@
                     }
                 });
 
+                // Gallery images
                 if (data.galerija && data.galerija.slike) {
-                    const imgs = document.querySelectorAll('.gallery-images img');
-                    data.galerija.slike.forEach((slika, i) => {
-                        if (imgs[i]) {
-                            imgs[i].src = slika.src;
-                            imgs[i].alt = slika.alt;
-                        }
+                    const track = document.querySelector('.gallery-images');
+                    track.innerHTML = '';
+                    data.galerija.slike.forEach(slika => {
+                        const img = document.createElement('img');
+                        img.className = 'img-1-icon';
+                        img.src = slika.src;
+                        img.alt = slika.alt || '';
+                        track.appendChild(img);
                     });
+                    initGallery();
                 }
 
                 // Hero carousel from JSON
@@ -316,33 +320,51 @@
             });
         })();
 
-        const images = [
-            '../Assets/Images/Img-2.png',
-            '../Assets/Images/Img-1-1.png',
-        ];
+        // Gallery — infinite scroll + drag + arrows
+        function initGallery() {
+            const track = document.querySelector('.gallery-images');
+            if (!track) return;
 
-        let current = 0;
-        const img1 = document.querySelector('.img-1-icon');
-        const img2 = document.querySelector('.img-2-icon');
+            const originals = Array.from(track.querySelectorAll('img'));
+            originals.forEach(img => track.appendChild(img.cloneNode(true)));
+            originals.forEach(img => track.insertBefore(img.cloneNode(true), track.firstChild));
 
-        function getImg(index) {
-            return images[((index % images.length) + images.length) % images.length];
+            const itemWidth = () => track.querySelector('img').offsetWidth + parseInt(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 8);
+            const setStart = () => { track.scrollLeft = itemWidth() * originals.length; };
+            setStart();
+
+            track.addEventListener('scroll', () => {
+                const w = itemWidth() * originals.length;
+                if (track.scrollLeft <= 0) {
+                    track.scrollLeft = w;
+                } else if (track.scrollLeft >= w * 2 - track.offsetWidth) {
+                    track.scrollLeft = w - track.offsetWidth;
+                }
+            }, { passive: true });
+
+            let isDown = false, startX, scrollLeft;
+            track.addEventListener('mousedown', e => {
+                isDown = true;
+                track.classList.add('is-dragging');
+                startX = e.pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+            });
+            track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('is-dragging'); });
+            track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('is-dragging'); });
+            track.addEventListener('mousemove', e => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - track.offsetLeft;
+                track.scrollLeft = scrollLeft - (x - startX);
+            });
+
+            document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
+                track.scrollBy({ left: itemWidth(), behavior: 'smooth' });
+            });
+            document.querySelector('.arrow-back-btn').addEventListener('click', () => {
+                track.scrollBy({ left: -itemWidth(), behavior: 'smooth' });
+            });
         }
-
-        function updateGallery() {
-            img1.src = getImg(current);
-            img2.src = getImg(current + 1);
-        }
-
-        document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
-            current = (current + 1) % images.length;
-            updateGallery();
-        });
-
-        document.querySelector('.arrow-back-btn').addEventListener('click', () => {
-            current = ((current - 1) + images.length) % images.length;
-            updateGallery();
-        });
 
         /* MOBILE — gallery dots */
         (function() {
