@@ -326,20 +326,16 @@
                 originals.forEach(img => track.appendChild(img.cloneNode(true)));
                 originals.forEach(img => track.insertBefore(img.cloneNode(true), track.firstChild));
 
-                const getItemWidth = () => {
-                    const imgs = track.querySelectorAll('img');
-                    if (imgs.length < 2) return imgs[0].offsetWidth + 8;
-                    return imgs[1].getBoundingClientRect().left - imgs[0].getBoundingClientRect().left;
-                };
+                const oneSet = () => track.scrollWidth / 3;
 
-                track.scrollLeft = getItemWidth() * originals.length;
+                track.scrollLeft = oneSet();
 
                 track.addEventListener('scroll', () => {
-                    const w = getItemWidth() * originals.length;
-                    if (track.scrollLeft < getItemWidth()) {
-                        track.scrollLeft += w;
-                    } else if (track.scrollLeft >= w * 2 - getItemWidth()) {
-                        track.scrollLeft -= w;
+                    const s = oneSet();
+                    if (track.scrollLeft < s * 0.5) {
+                        track.scrollLeft += s;
+                    } else if (track.scrollLeft >= s * 2) {
+                        track.scrollLeft -= s;
                     }
                 }, { passive: true });
 
@@ -359,11 +355,12 @@
                     track.scrollLeft = scrollLeft - (x - startX);
                 });
 
+                const imgW = () => track.scrollWidth / (originals.length * 3);
                 document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
-                    track.scrollBy({ left: getItemWidth(), behavior: 'smooth' });
+                    track.scrollBy({ left: imgW(), behavior: 'smooth' });
                 });
                 document.querySelector('.arrow-back-btn').addEventListener('click', () => {
-                    track.scrollBy({ left: -getItemWidth(), behavior: 'smooth' });
+                    track.scrollBy({ left: -imgW(), behavior: 'smooth' });
                 });
             }
 
