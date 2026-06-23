@@ -72,35 +72,34 @@
             <div class="hero-image-wrapper">
                 <img class="hero-bg-icon" src="./Assets/Images/Hero-bg.png"
                     alt="Pogled na luksuznu salonsku kuću u Zrenjaninu">
-                <h1 class="hero-title">Title goes here</h1>
-                <p class="hero-body">Emerging from the cacti and scrubby green brush of Puerto Escondido on the Oaxacan
-                    coast, a spaceshiplike form touches down lightly on the land.</p>
+                <h1 class="hero-title" data-cms="hero.title"></h1>
+                <p class="hero-body" data-cms="hero.body"></p>
             </div>
             <div class="hero-stats" aria-label="Ključne karakteristike nekretnine">
                 <div class="hero-stats-child"></div>
                 <div class="stats-label-parent">
                     <div class="stats-label">Lokacija</div>
-                    <div class="stats-title">Zrenjanin</div>
+                    <div class="stats-title" data-cms="hero_stats.lokacija"></div>
                 </div>
                 <div class="stats-label-group">
                     <div class="stats-label">Površina nekretnine</div>
-                    <div class="stats-title">380m²</div>
+                    <div class="stats-title" data-cms="hero_stats.povrsina_nekretnine"></div>
                 </div>
                 <div class="stats-label-container">
                     <div class="stats-label">Površina placa</div>
-                    <div class="stats-title">821m²</div>
+                    <div class="stats-title" data-cms="hero_stats.povrsina_placa"></div>
                 </div>
                 <div class="group-div">
                     <div class="stats-label">Broj prostorija</div>
-                    <div class="stats-title">12</div>
+                    <div class="stats-title" data-cms="hero_stats.broj_prostorija"></div>
                 </div>
                 <div class="stats-label-parent2">
                     <div class="stats-label">Broj garažnih mesta</div>
-                    <div class="stats-title">2</div>
+                    <div class="stats-title" data-cms="hero_stats.garaza"></div>
                 </div>
                 <div class="stats-label-parent3">
                     <div class="stats-label">Cena</div>
-                    <div class="stats-title">295.000€</div>
+                    <div class="stats-title" data-cms="hero_stats.cena"></div>
                 </div>
             </div>
         </section>
@@ -111,9 +110,8 @@
 
                 <!-- Left column: title + body + image -->
                 <div class="section-2-left">
-                    <h2 class="title">Detalji o kući</h2>
-                    <p class="body">Porodična salonska kuća površine 380m² smeštena na parceli od 821m² sa ukrasnim
-                        vrtom, fontanom i letnjikovcem.</p>
+                    <h2 class="title" data-cms="osnovne_info.title"></h2>
+                    <p class="body" data-cms="osnovne_info.body"></p>
                     <div class="section-2-img-wrapper">
                         <img class="section2-img-icon" src="./Assets/Images/Section2-img.png"
                             alt="Detalj enterijera kuće">
@@ -126,22 +124,21 @@
                     <div class="stats-col-left">
                         <div class="stats-col-left-top">
                             <div class="stats-label7">Broj prostorija</div>
-                            <div class="stats-title-large">12</div>
+                            <div class="stats-title-large" data-cms="osnovne_info.broj_prostorija"></div>
                         </div>
                         <div class="stats-col-left-bottom">
                             <div class="stats-label8">Letnjikovac</div>
-                            <div class="stats-title-large">1</div>
+                            <div class="stats-title-large" data-cms="osnovne_info.letnjikovac"></div>
                         </div>
                     </div>
-                    <!-- Desna stats kolona: gornji blok + highlight blok bez linije -->
                     <div class="stats-col-right">
                         <div class="stats-col-right-top">
                             <div class="stats-label10">Broj spavaćih soba</div>
-                            <div class="stats-title-large">3</div>
+                            <div class="stats-title-large" data-cms="osnovne_info.spavace_sobe"></div>
                         </div>
                         <div class="stats-col-right-bottom">
                             <div class="stats-label9">Broj paunova :)</div>
-                            <div class="stats-title-large">2</div>
+                            <div class="stats-title-large" data-cms="osnovne_info.paunovi"></div>
                         </div>
                     </div>
                 </div>
@@ -152,10 +149,9 @@
         <!-- SECTION 3 — Galerija -->
         <section class="section-3" id="galerija" aria-label="Galerija fotografija">
             <div class="gallery-header">
-                <h2 class="gallery-title">Galerija</h2>
+                <h2 class="gallery-title" data-cms="galerija.title"></h2>
                 <div class="gallery-header-right">
-                    <p class="body2">Pogledajte unutrašnjost i eksterijer ove jedinstvene nekretnine sa unikatnim
-                        umetničkim nameštajem.</p>
+                    <p class="body2" data-cms="galerija.body"></p>
                     <div class="gallery-controls">
                         <button class="arrow-back-btn" aria-label="Prethodna slika">
                             <img class="arrow-back-icon" src="./Assets/Icons/arrow-back.svg" alt="">
@@ -180,7 +176,7 @@
         <!-- SECTION 4 — Detaljnije o kući -->
         <section class="section-4" id="opremljenost" aria-label="Detaljan opis nekretnine">
             <div class="section-4-inner">
-                <h2 class="title3">Detaljnije<br>o kući</h2>
+                <h2 class="title3" data-cms="detalji.title"></h2>
 
                 <div class="section-4-text">
                     <div class="body-large">
@@ -224,9 +220,8 @@
 
             <div class="stats" aria-label="Opremljenost">
                 <div class="stats-child"></div>
-                <div class="stats-label11">Opremljenost</div>
-                <div class="stats-title7">Centralno grejanje, klima, 2x garaža, plin, podrum, letnjikovac, roštilj,
-                    terasa...</div>
+                <div class="stats-label11" data-cms="detalji.opremljenost_label"></div>
+                <div class="stats-title7" data-cms="detalji.opremljenost_tekst"></div>
             </div>
         </section>
 
@@ -237,15 +232,11 @@
 
             <div class="section-5-inner">
                 <!-- Leva kolona: naslov -->
-                <h2 class="title4">O<br> Zrenjaninu</h2>
+                <h2 class="title4" data-cms="lokacija.title"></h2>
 
-                <!-- Desktop: desna kolona tekst+controls+karusel | Mobile: ispod naslova -->
                 <div class="section-5-bottom">
-                    <p class="body-large3">Zrenjanin je grad u srcu Banata, poznat po bogatoj kulturnoj baštini,
-                        živoj muzičkoj sceni i tradiciji. Kao administrativni centar Srednjobanatskog okruga, grad
-                        nudi odličnu infrastrukturu, obrazovne institucije i kvalitetan urbani život u srcu
-                        Vojvodine.</p>
-                    <a href="https://www.zrenjanin.rs" target="_blank" rel="noopener" class="cta">/ Pročitaj još</a>
+                    <p class="body-large3" data-cms="lokacija.body"></p>
+                    <a href="https://www.zrenjanin.rs" target="_blank" rel="noopener" class="cta" data-cms="lokacija.cta"></a>
                 </div>
 
                 <!-- Desna kolona: foto, stats, foto — treća parcijalno izlazi desno -->
@@ -255,11 +246,11 @@
                             <img class="loc-card" src="./Assets/Images/Img-1-1.png" alt="Zrenjanin — fotografija 1">
                             <div class="stats-card loc-card" aria-label="Statistike o Zrenjaninu">
                                 <div class="stats-label12">Broj stanovnika</div>
-                                <div class="stats-title8">65.000</div>
+                                <div class="stats-title8" data-cms="lokacija.stanovnici"></div>
                                 <div class="stats-label13">Broj manifestacija</div>
-                                <div class="stats-title9">50+</div>
+                                <div class="stats-title9" data-cms="lokacija.manifestacije"></div>
                                 <div class="stats-label14">Vebsajt</div>
-                                <div class="stats-title10">zrenjanin.rs</div>
+                                <div class="stats-title10" data-cms="lokacija.website"></div>
                                 <img class="img-grb-icon" src="./Assets/Images/Img-grb.png" alt="Grb Zrenjanina">
                             </div>
                             <img class="loc-card" src="./Assets/Images/Img-11.png" alt="Zrenjanin — fotografija 2">
@@ -288,15 +279,14 @@
         <section class="title-parent" id="kontakt" aria-label="Kontakt informacije">
             <div class="title-parent-inner">
                 <div>
-                    <h2 class="title2">Kontakt</h2>
-                    <p class="body3">Ukoliko ste zainteresovani za kupovinu ili posetu nekretnini, slobodno nas
-                        kontaktirajte.</p>
+                    <h2 class="title2" data-cms="kontakt.title"></h2>
+                    <p class="body3" data-cms="kontakt.body"></p>
                 </div>
                 <div class="contact-col">
                     <b class="label">Email</b>
-                    <a class="contact-label" href="mailto:gavra.vlaskalin@gmail.com">gavra.vlaskalin@gmail.com</a>
+                    <a class="contact-label" data-cms="kontakt.email" data-cms-href="mailto:{kontakt.email}"></a>
                     <b class="label2">Telefon</b>
-                    <a class="contact-label2" href="tel:+38163516065">+381 63 516 065</a>
+                    <a class="contact-label2" data-cms="kontakt.telefon" data-cms-href="tel:{kontakt.telefon}"></a>
                 </div>
             </div>
         </section>
@@ -304,6 +294,48 @@
     </div>
 
     <script>
+        /* =============================================
+           CMS — učitavanje JSON podataka
+           ============================================= */
+        (function() {
+            const dataFiles = ['hero', 'hero_stats', 'osnovne_info', 'galerija', 'detalji', 'lokacija', 'kontakt'];
+            const data = {};
+
+            Promise.all(
+                dataFiles.map(name =>
+                    fetch('/_data/' + name + '.json')
+                        .then(r => r.json())
+                        .then(json => { data[name] = json; })
+                )
+            ).then(() => {
+                // Popuni sve elemente sa data-cms atributom
+                document.querySelectorAll('[data-cms]').forEach(el => {
+                    const [file, key] = el.getAttribute('data-cms').split('.');
+                    if (data[file] && data[file][key] !== undefined) {
+                        el.textContent = data[file][key];
+                    }
+                    // href za kontakt linkove
+                    const hrefTemplate = el.getAttribute('data-cms-href');
+                    if (hrefTemplate) {
+                        el.href = hrefTemplate
+                            .replace('{kontakt.email}', data.kontakt.email)
+                            .replace('{kontakt.telefon}', data.kontakt.telefon.replace(/\s/g, ''));
+                    }
+                });
+
+                // Galerija slike
+                if (data.galerija && data.galerija.slike) {
+                    const imgs = document.querySelectorAll('.gallery-images img');
+                    data.galerija.slike.forEach((slika, i) => {
+                        if (imgs[i]) {
+                            imgs[i].src = slika.src;
+                            imgs[i].alt = slika.alt;
+                        }
+                    });
+                }
+            });
+        })();
+
         /* =============================================
            GALERIJA — dodaj / ukloni fotografije ovde
            ============================================= */
