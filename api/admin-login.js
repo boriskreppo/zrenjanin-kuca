@@ -2,8 +2,12 @@ import crypto from 'crypto';
 
 function verifyPassword(password, hash) {
   // hash format: sha256:salt:digest
-  const [, salt, digest] = hash.split(':');
-  const attempt = crypto.createHmac('sha256', salt).update(password).digest('hex');
+  const parts = hash.trim().split(':');
+  const salt = parts[1];
+  const digest = parts[2];
+  if (!salt || !digest) return false;
+  const attempt = crypto.createHmac('sha256', salt).update(password.trim()).digest('hex');
+  if (attempt.length !== digest.length) return false;
   return crypto.timingSafeEqual(Buffer.from(attempt), Buffer.from(digest));
 }
 
@@ -35,7 +39,7 @@ export default async function handler(req, res) {
     }
     const token = createToken(secret);
     return res.status(200).json({ token });
-  } catch {
-    return res.status(401).json({ error: 'Pogrešna lozinka.' });
+  } catch (err) {
+    return res.status(500).json({ error: 'Greška: ' + err.message });
   }
 }
