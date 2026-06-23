@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Luxury mansion for sale in Zrenjanin, Serbia. 380m² on a 821m² plot, 12 rooms, garage, gazebo, ornamental garden. Price 295,000€.">
+    <meta name="keywords"
+        content="house for sale Zrenjanin, real estate Zrenjanin, luxury house, mansion, property for sale Serbia">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Luxury Mansion — Zrenjanin">
+    <meta property="og:description"
+        content="Family mansion 380m² on a 821m² plot with ornamental garden, gazebo and garage for 2 cars. Price 295,000€.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <title>Luxury Mansion for Sale — Zrenjanin | 295,000€</title>
+
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&display=swap" />
+</head>
+
+<body>
+
+    <div class="homepage">
+
+        <!-- BURGER MENU OVERLAY -->
+        <div class="burger-menu" id="burger-menu" aria-hidden="true">
+            <img class="burger-menu-bg" src="../Assets/Images/Menu-bg.png" alt="">
+            <button class="burger-close" id="burger-close" aria-label="Close menu">✕</button>
+            <nav class="burger-nav">
+                <a href="#osnovne-info" class="burger-item">Basic Information</a>
+                <a href="#opremljenost" class="burger-item">Amenities</a>
+                <a href="#galerija" class="burger-item">Gallery</a>
+                <a href="#lokacija" class="burger-item">Location</a>
+            </nav>
+            <a href="tel:+38163516065" class="burger-cta">+381 63 516 065</a>
+            <div class="burger-lang">
+                <a href="../index.html" class="rs">RS</a><span> / </span><b class="en-active">EN</b>
+            </div>
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="navigation" aria-label="Main navigation">
+            <div class="nav-bg"></div>
+            <a href="#osnovne-info" class="navigation-item-1">Basic Information</a>
+            <a href="#galerija" class="navigation-item-2">Gallery</a>
+            <a href="#opremljenost" class="navigation-item-3">Amenities</a>
+            <a href="#lokacija" class="navigation-item-4">Location</a>
+            <a href="tel:+38163516065" class="nav-call">+381 63 516 065</a>
+            <div class="language-switcher">
+                <a href="../index.html" class="rs">RS</a><b class="en"> / EN</b>
+            </div>
+            <button class="nav-hamburger" aria-label="Open menu" onclick="document.getElementById('burger-menu').classList.add('is-open');document.body.style.overflow='hidden';">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:32px;height:32px;flex-shrink:0;">
+                    <path d="M26.5 10.5H5.5C4.65 10.5 4 9.85 4 9C4 8.15 4.65 7.5 5.5 7.5H26.5C27.35 7.5 28 8.15 28 9C28 9.85 27.35 10.5 26.5 10.5Z" fill="white"/>
+                    <path d="M26.5 17.5H5.5C4.65 17.5 4 16.85 4 16C4 15.15 4.65 14.5 5.5 14.5H26.5C27.35 14.5 28 15.15 28 16C28 16.85 27.35 17.5 26.5 17.5Z" fill="white"/>
+                    <path d="M26.5 24.5H5.5C4.65 24.5 4 23.85 4 23C4 22.15 4.65 21.5 5.5 21.5H26.5C27.35 21.5 28 22.15 28 23C28 23.85 27.35 24.5 26.5 24.5Z" fill="white"/>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero" id="hero" aria-label="Hero section">
+            <div class="hero-image-wrapper">
+                <img class="hero-bg-icon" src="../Assets/Images/Hero-bg.png"
+                    alt="View of a luxury mansion in Zrenjanin">
+                <h1 class="hero-title">Title goes here</h1>
+                <p class="hero-body">Emerging from the cacti and scrubby green brush of Puerto Escondido on the Oaxacan
+                    coast, a spaceshiplike form touches down lightly on the land.</p>
+            </div>
+            <div class="hero-stats" aria-label="Key property features">
+                <div class="hero-stats-child"></div>
+                <div class="stats-label-parent">
+                    <div class="stats-label">Location</div>
+                    <div class="stats-title">Zrenjanin</div>
+                </div>
+                <div class="stats-label-group">
+                    <div class="stats-label">Property area</div>
+                    <div class="stats-title">380m²</div>
+                </div>
+                <div class="stats-label-container">
+                    <div class="stats-label">Plot area</div>
+                    <div class="stats-title">821m²</div>
+                </div>
+                <div class="group-div">
+                    <div class="stats-label">Number of rooms</div>
+                    <div class="stats-title">12</div>
+                </div>
+                <div class="stats-label-parent2">
+                    <div class="stats-label">Garage spaces</div>
+                    <div class="stats-title">2</div>
+                </div>
+                <div class="stats-label-parent3">
+                    <div class="stats-label">Price</div>
+                    <div class="stats-title">295,000€</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 — Basic Information -->
+        <section class="section-2" id="osnovne-info" aria-label="Basic property information">
+            <div class="section-2-inner">
+
+                <div class="section-2-left">
+                    <h2 class="title">Property Details</h2>
+                    <p class="body">A family mansion of 380m² situated on a 821m² plot with an ornamental garden, fountain and gazebo.</p>
+                    <div class="section-2-img-wrapper">
+                        <img class="section2-img-icon" src="../Assets/Images/Section2-img.png"
+                            alt="Interior detail of the house">
+                    </div>
+                </div>
+
+                <div class="stats-right">
+                    <div class="stats-col-left">
+                        <div class="stats-col-left-top">
+                            <div class="stats-label7">Number of rooms</div>
+                            <div class="stats-title-large">12</div>
+                        </div>
+                        <div class="stats-col-left-bottom">
+                            <div class="stats-label8">Gazebo</div>
+                            <div class="stats-title-large">1</div>
+                        </div>
+                    </div>
+                    <div class="stats-col-right">
+                        <div class="stats-col-right-top">
+                            <div class="stats-label10">Bedrooms</div>
+                            <div class="stats-title-large">3</div>
+                        </div>
+                        <div class="stats-col-right-bottom">
+                            <div class="stats-label9">Peacocks :)</div>
+                            <div class="stats-title-large">2</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3 — Gallery -->
+        <section class="section-3" id="galerija" aria-label="Photo gallery">
+            <div class="gallery-header">
+                <h2 class="gallery-title">Gallery</h2>
+                <div class="gallery-header-right">
+                    <p class="body2">Explore the interior and exterior of this unique property with its one-of-a-kind artistic furniture.</p>
+                    <div class="gallery-controls">
+                        <button class="arrow-back-btn" aria-label="Previous image">
+                            <img class="arrow-back-icon" src="../Assets/Icons/arrow-back.svg" alt="">
+                        </button>
+                        <button class="arrow-forward-btn" aria-label="Next image">
+                            <img class="arrow-forward-icon" src="../Assets/Icons/arrow-forward.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-images">
+                <img class="img-1-icon" src="../Assets/Images/Img-1-1.png" alt="Interior photo — view 1">
+                <img class="img-2-icon" src="../Assets/Images/Img-2.png" alt="Interior photo — view 2">
+                <img class="img-1-icon" src="../Assets/Images/Img-1-1.png" alt="Interior photo — view 3">
+                <img class="img-2-icon" src="../Assets/Images/Img-2.png" alt="Interior photo — view 4">
+                <img class="img-1-icon" src="../Assets/Images/Img-1-1.png" alt="Interior photo — view 5">
+                <img class="img-2-icon" src="../Assets/Images/Img-2.png" alt="Interior photo — view 6">
+            </div>
+            <div class="gallery-dots" aria-hidden="true"></div>
+        </section>
+
+        <!-- SECTION 4 — Property Details -->
+        <section class="section-4" id="opremljenost" aria-label="Detailed property description">
+            <div class="section-4-inner">
+                <h2 class="title3">More about<br>the house</h2>
+
+                <div class="section-4-text">
+                    <div class="body-large">
+                        <span class="porodina-salonska-kua">A family mansion of </span>
+                        <span class="letnjikovac-sa-kamenim">380m²</span>
+                        <span class="porodina-salonska-kua"> situated on a plot of </span>
+                        <span class="letnjikovac-sa-kamenim">821m²</span>
+                        <span class="porodina-salonska-kua"> with an ornamental garden featuring a fountain,
+                            an enclosed area with peacocks, and a </span>
+                        <span class="letnjikovac-sa-kamenim">gazebo with a stone barbecue</span>
+                        <span class="porodina-salonska-kua"> — an ideal place to relax and unwind. The house consists of
+                            a ground floor and an upper floor. The facade features decorative ornamentation. The ground floor is furnished with
+                        </span>
+                        <span class="letnjikovac-sa-kamenim">handcrafted period furniture.</span>
+                        <span class="porodina-salonska-kua"> On the ground floor you will find a living room with a fireplace, a grand dining room with a concert grand piano, a kitchen overlooking the garden, a master bedroom, a blue salon, a study with a leather Chesterfield suite, fireplace and home library, as well as a bathroom with a jacuzzi tub.</span>
+                    </div>
+                    <div class="body-large2">
+                        <span class="porodina-salonska-kua">The interior is adorned with large oil paintings, wall and cabinet antique clocks and handmade chandeliers. The upper floor is furnished with </span>
+                        <span class="letnjikovac-sa-kamenim">unique artistic furniture</span>
+                        <span class="porodina-salonska-kua"> by a renowned Serbian sculptor. On the upper floor there is a large living room with access to two terraces overlooking the garden. Two bedrooms, a dressing room, a kitchenette and a bathroom with a separate room intended for a sauna. Below part of the house is a basement housing the boiler room, with boilers for solid fuel, gas and electricity. On the plot, next to the house, there is also a </span>
+                        <span class="letnjikovac-sa-kamenim">garage for two cars.</span>
+                        <span class="porodina-salonska-kua"> The house is located in an attractive, quiet inner centre of Zrenjanin. The house is sold together with all its luxury and unique furniture.</span>
+                    </div>
+                </div>
+
+                <div class="img-and-script">
+                    <img class="img-icon" src="../Assets/Images/Img-11.png" alt="View of the house">
+                    <img class="script-text-1-img" src="../Assets/Images/script-text-1.svg" alt="fully">
+                    <img class="script-text-2-img" src="../Assets/Images/script-text-2.svg" alt="furnished">
+                </div>
+            </div>
+
+            <div class="stats" aria-label="Amenities">
+                <div class="stats-child"></div>
+                <div class="stats-label11">Amenities</div>
+                <div class="stats-title7">Central heating, air conditioning, 2x garage, gas, basement, gazebo, barbecue,
+                    terrace...</div>
+            </div>
+        </section>
+
+        <!-- SECTION 5 — About Zrenjanin / Location -->
+        <section class="section-5" id="lokacija" aria-label="About Zrenjanin">
+            <div class="section-bg"></div>
+            <img class="img-bg-icon" src="../Assets/Images/Img-bg.png" alt="">
+
+            <div class="section-5-inner">
+                <h2 class="title4">About<br> Zrenjanin</h2>
+
+                <div class="section-5-bottom">
+                    <p class="body-large3">Zrenjanin is a city in the heart of Banat, known for its rich cultural heritage,
+                        vibrant music scene and tradition. As the administrative centre of the Central Banat District, the city
+                        offers excellent infrastructure, educational institutions and a high quality urban life in the heart
+                        of Vojvodina.</p>
+                    <a href="https://www.zrenjanin.rs" target="_blank" rel="noopener" class="cta">/ Read more</a>
+                </div>
+
+                <div class="section-5-right">
+                    <div class="section-5-cards-wrapper">
+                        <div class="section-5-cards" id="section-5-track">
+                            <img class="loc-card" src="../Assets/Images/Img-1-1.png" alt="Zrenjanin — photo 1">
+                            <div class="stats-card loc-card" aria-label="Zrenjanin statistics">
+                                <div class="stats-label12">Population</div>
+                                <div class="stats-title8">65,000</div>
+                                <div class="stats-label13">Annual events</div>
+                                <div class="stats-title9">50+</div>
+                                <div class="stats-label14">Website</div>
+                                <div class="stats-title10">zrenjanin.rs</div>
+                                <img class="img-grb-icon" src="../Assets/Images/Img-grb.png" alt="Coat of arms of Zrenjanin">
+                            </div>
+                            <img class="loc-card" src="../Assets/Images/Img-11.png" alt="Zrenjanin — photo 2">
+                        </div>
+                    </div>
+
+                    <div class="section-5-controls">
+                        <button id="loc-prev" class="arrow-back-white-btn" aria-label="Previous photo">
+                            <img class="arrow-back-white-icon" src="../Assets/Icons/arrow-back-white.svg" alt="">
+                        </button>
+                        <button id="loc-next" class="arrow-forward-btn2" aria-label="Next photo">
+                            <img class="arrow-forward-icon2" src="../Assets/Icons/arrow-forward.svg" alt="">
+                        </button>
+                    </div>
+
+                    <div class="loc-dots" aria-hidden="true">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="title-parent" id="kontakt" aria-label="Contact information">
+            <div class="title-parent-inner">
+                <div>
+                    <h2 class="title2">Contact</h2>
+                    <p class="body3">If you are interested in purchasing or visiting the property, feel free to get in touch.</p>
+                </div>
+                <div class="contact-col">
+                    <b class="label">Email</b>
+                    <a class="contact-label" href="mailto:gavra.vlaskalin@gmail.com">gavra.vlaskalin@gmail.com</a>
+                    <b class="label2">Phone</b>
+                    <a class="contact-label2" href="tel:+38163516065">+381 63 516 065</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const images = [
+            '../Assets/Images/Img-2.png',
+            '../Assets/Images/Img-1-1.png',
+        ];
+
+        let current = 0;
+        const img1 = document.querySelector('.img-1-icon');
+        const img2 = document.querySelector('.img-2-icon');
+
+        function getImg(index) {
+            return images[((index % images.length) + images.length) % images.length];
+        }
+
+        function updateGallery() {
+            img1.src = getImg(current);
+            img2.src = getImg(current + 1);
+        }
+
+        document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
+            current = (current + 1) % images.length;
+            updateGallery();
+        });
+
+        document.querySelector('.arrow-back-btn').addEventListener('click', () => {
+            current = ((current - 1) + images.length) % images.length;
+            updateGallery();
+        });
+
+        /* MOBILE — gallery dots */
+        (function() {
+            const dotsContainer = document.querySelector('.gallery-dots');
+            const galleryImages = document.querySelector('.gallery-images');
+            if (!dotsContainer || !galleryImages) return;
+
+            const totalSlides = galleryImages.querySelectorAll('img').length;
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dotsContainer.appendChild(dot);
+            }
+
+            galleryImages.addEventListener('scroll', () => {
+                const itemWidth = galleryImages.querySelector('img').offsetWidth + 8;
+                const index = Math.round(galleryImages.scrollLeft / itemWidth);
+                dotsContainer.querySelectorAll('.dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            });
+        })();
+
+        /* MOBILE — location dots */
+        (function() {
+            const dotsContainer = document.querySelector('.loc-dots');
+            const wrapper = document.querySelector('.section-5-cards-wrapper');
+            if (!dotsContainer || !wrapper) return;
+            wrapper.addEventListener('scroll', () => {
+                const itemWidth = 294 + 12;
+                const index = Math.round(wrapper.scrollLeft / itemWidth);
+                dotsContainer.querySelectorAll('.dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            });
+        })();
+
+        /* LOCATION CAROUSEL — infinite loop (desktop only) */
+        if (window.innerWidth > 768) {
+        const track = document.getElementById('section-5-track');
+        const step = 294 + 12;
+
+        const origCards = Array.from(track.children);
+        origCards.forEach(card => track.appendChild(card.cloneNode(true)));
+
+        const totalCards = origCards.length;
+        let locOffset = 0;
+
+        function moveTrack(animate) {
+            track.style.transition = animate ? 'transform 0.4s ease' : 'none';
+            track.style.transform = `translateX(-${locOffset}px)`;
+        }
+
+        document.getElementById('loc-next').addEventListener('click', () => {
+            locOffset += step;
+            moveTrack(true);
+            if (locOffset >= totalCards * step) {
+                setTimeout(() => {
+                    locOffset = 0;
+                    moveTrack(false);
+                }, 400);
+            }
+        });
+
+        document.getElementById('loc-prev').addEventListener('click', () => {
+            if (locOffset <= 0) {
+                locOffset = totalCards * step;
+                moveTrack(false);
+                setTimeout(() => {
+                    locOffset -= step;
+                    moveTrack(true);
+                }, 20);
+            } else {
+                locOffset -= step;
+                moveTrack(true);
+            }
+        });
+        }
+
+        /* BURGER MENU */
+        (function() {
+            const menu = document.getElementById('burger-menu');
+            const openBtn = document.querySelector('.nav-hamburger');
+            const closeBtn = document.getElementById('burger-close');
+
+            function openMenu() {
+                menu.classList.add('is-open');
+                menu.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                menu.classList.remove('is-open');
+                menu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            openBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+
+            menu.querySelectorAll('.burger-item').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            menu.querySelector('.burger-cta').addEventListener('click', closeMenu);
+        })();
+    </script>
+</body>
+
+</html>

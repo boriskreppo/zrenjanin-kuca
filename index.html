@@ -30,6 +30,22 @@
 
     <div class="homepage">
 
+        <!-- BURGER MENU OVERLAY -->
+        <div class="burger-menu" id="burger-menu" aria-hidden="true">
+            <img class="burger-menu-bg" src="./Assets/Images/Menu-bg.png" alt="">
+            <button class="burger-close" id="burger-close" aria-label="Zatvori meni">✕</button>
+            <nav class="burger-nav">
+                <a href="#osnovne-info" class="burger-item">Osnovne informacije</a>
+                <a href="#opremljenost" class="burger-item">Opremljenost</a>
+                <a href="#galerija" class="burger-item">Galerija</a>
+                <a href="#lokacija" class="burger-item">Lokacija</a>
+            </nav>
+            <a href="tel:+38163516065" class="burger-cta">+381 63 516 065</a>
+            <div class="burger-lang">
+                <b class="rs">RS / </b><a href="./en/index.html" class="en">EN</a>
+            </div>
+        </div>
+
         <!-- NAVIGATION -->
         <nav class="navigation" aria-label="Glavna navigacija">
             <div class="nav-bg"></div>
@@ -40,10 +56,14 @@
             <a href="tel:+38163516065" class="nav-call">+381 63 516 065</a>
             <div class="language-switcher">
                 <b class="rs">RS / </b>
-                <span class="en">EN</span>
+                <a href="./en/index.html" class="en">EN</a>
             </div>
-            <button class="nav-hamburger" aria-label="Otvori meni">
-                <img src="./Assets/Icons/menu-mobile.svg" alt="">
+            <button class="nav-hamburger" aria-label="Otvori meni" onclick="document.getElementById('burger-menu').classList.add('is-open');document.body.style.overflow='hidden';">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:32px;height:32px;flex-shrink:0;">
+                    <path d="M26.5 10.5H5.5C4.65 10.5 4 9.85 4 9C4 8.15 4.65 7.5 5.5 7.5H26.5C27.35 7.5 28 8.15 28 9C28 9.85 27.35 10.5 26.5 10.5Z" fill="white"/>
+                    <path d="M26.5 17.5H5.5C4.65 17.5 4 16.85 4 16C4 15.15 4.65 14.5 5.5 14.5H26.5C27.35 14.5 28 15.15 28 16C28 16.85 27.35 17.5 26.5 17.5Z" fill="white"/>
+                    <path d="M26.5 24.5H5.5C4.65 24.5 4 23.85 4 23C4 22.15 4.65 21.5 5.5 21.5H26.5C27.35 21.5 28 22.15 28 23C28 23.85 27.35 24.5 26.5 24.5Z" fill="white"/>
+                </svg>
             </button>
         </nav>
 
@@ -398,6 +418,34 @@
             }
         });
         } // end desktop-only loc carousel
+
+        /* BURGER MENU */
+        (function() {
+            const menu = document.getElementById('burger-menu');
+            const openBtn = document.querySelector('.nav-hamburger');
+            const closeBtn = document.getElementById('burger-close');
+
+            function openMenu() {
+                menu.classList.add('is-open');
+                menu.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                menu.classList.remove('is-open');
+                menu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            openBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+
+            // Zatvori meni klikom na link
+            menu.querySelectorAll('.burger-item').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+            menu.querySelector('.burger-cta').addEventListener('click', closeMenu);
+        })();
     </script>
 </body>
 
