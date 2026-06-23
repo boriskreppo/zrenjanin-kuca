@@ -303,7 +303,7 @@
 
             Promise.all(
                 dataFiles.map(name =>
-                    fetch('/_data/' + name + '.json')
+                    fetch('https://raw.githubusercontent.com/boriskreppo/zrenjanin-kuca/main/_data/' + name + '.json')
                         .then(r => r.json())
                         .then(json => { data[name] = json; })
                 )
