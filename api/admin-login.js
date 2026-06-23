@@ -14,10 +14,15 @@ function createToken(secret) {
   return `${header}.${payload}.${sig}`;
 }
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  const { password } = req.body || {};
+  let body = req.body || {};
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { body = {}; }
+  }
+
+  const { password } = body;
   if (!password) return res.status(400).json({ error: 'Lozinka je obavezna.' });
 
   const hash = process.env.ADMIN_PASSWORD_HASH;
