@@ -3,12 +3,12 @@
   "body": "Pogledajte unutrašnjost i eksterijer ove jedinstvene nekretnine sa unikatnim umetničkim nameštajem.",
   "slike": [
     {
-      "src": "/Assets/Images/Img-1-1.png",
-      "alt": "Fotografija enterijera kuće — pogled 1"
-    },
-    {
       "src": "/Assets/Images/house-1.jpg",
       "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Img-1-1.png",
+      "alt": "Fotografija enterijera kuće — pogled 1"
     },
     {
       "src": "/Assets/Images/Img-2.png",
