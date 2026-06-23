@@ -12,7 +12,7 @@ locale: sr
 
 collections:
   - name: "sadrzaj"
-    label: "Sadržaj stranice"
+    label: "Sadržaj stranice (SR)"
     files:
 
       - name: "hero"
@@ -86,3 +86,79 @@ collections:
           - { label: "Opis", name: "body", widget: "text" }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Telefon", name: "telefon", widget: "string" }
+
+  - name: "sadrzaj_en"
+    label: "Content (English)"
+    files:
+
+      - name: "hero_en"
+        label: "Hero section"
+        file: "_data/en/hero.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "body", widget: "text" }
+
+      - name: "osnovne_info_en"
+        label: "Basic Information"
+        file: "_data/en/osnovne_info.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "body", widget: "text" }
+          - { label: "Number of rooms", name: "broj_prostorija", widget: "string" }
+          - { label: "Gazebo", name: "letnjikovac", widget: "string" }
+          - { label: "Bedrooms", name: "spavace_sobe", widget: "string" }
+          - { label: "Peacocks", name: "paunovi", widget: "string" }
+
+      - name: "hero_stats_en"
+        label: "Hero statistics"
+        file: "_data/en/hero_stats.json"
+        fields:
+          - { label: "Location", name: "lokacija", widget: "string" }
+          - { label: "Property area", name: "povrsina_nekretnine", widget: "string" }
+          - { label: "Plot area", name: "povrsina_placa", widget: "string" }
+          - { label: "Number of rooms", name: "broj_prostorija", widget: "string" }
+          - { label: "Garage spaces", name: "garaza", widget: "string" }
+          - { label: "Price", name: "cena", widget: "string" }
+
+      - name: "galerija_en"
+        label: "Gallery"
+        file: "_data/en/galerija.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "body", widget: "text" }
+          - name: "slike"
+            label: "Images"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "src", widget: "image" }
+              - { label: "Alt text", name: "alt", widget: "string" }
+
+      - name: "detalji_en"
+        label: "More about the house"
+        file: "_data/en/detalji.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Text 1", name: "tekst1", widget: "text" }
+          - { label: "Text 2", name: "tekst2", widget: "text" }
+          - { label: "Amenities — label", name: "opremljenost_label", widget: "string" }
+          - { label: "Amenities — text", name: "opremljenost_tekst", widget: "string" }
+
+      - name: "lokacija_en"
+        label: "About Zrenjanin"
+        file: "_data/en/lokacija.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "body", widget: "text" }
+          - { label: "CTA text", name: "cta", widget: "string" }
+          - { label: "Population", name: "stanovnici", widget: "string" }
+          - { label: "Annual events", name: "manifestacije", widget: "string" }
+          - { label: "Website", name: "website", widget: "string" }
+
+      - name: "kontakt_en"
+        label: "Contact"
+        file: "_data/en/kontakt.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "body", widget: "text" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "telefon", widget: "string" }
