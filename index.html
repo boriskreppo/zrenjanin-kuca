@@ -372,17 +372,24 @@
             originals.forEach(img => track.appendChild(img.cloneNode(true)));
             originals.forEach(img => track.insertBefore(img.cloneNode(true), track.firstChild));
 
-            const itemWidth = () => track.querySelector('img').offsetWidth + parseInt(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 8);
-            const setStart = () => { track.scrollLeft = itemWidth() * originals.length; };
-            setStart();
+            // Sačekaj da se slike renderuju pa izmeri pravu širinu
+            const getItemWidth = () => {
+                const img = track.querySelector('img');
+                const next = img.nextElementSibling;
+                if (next) return next.getBoundingClientRect().left - img.getBoundingClientRect().left;
+                return img.offsetWidth + 8;
+            };
+
+            const setStart = () => { track.scrollLeft = getItemWidth() * originals.length; };
+            requestAnimationFrame(setStart);
 
             // Infinite loop na scroll
             track.addEventListener('scroll', () => {
-                const w = itemWidth() * originals.length;
-                if (track.scrollLeft <= 0) {
-                    track.scrollLeft = w;
-                } else if (track.scrollLeft >= w * 2 - track.offsetWidth) {
-                    track.scrollLeft = w - track.offsetWidth;
+                const w = getItemWidth() * originals.length;
+                if (track.scrollLeft < w * 0.25) {
+                    track.scrollLeft += w;
+                } else if (track.scrollLeft > w * 1.75) {
+                    track.scrollLeft -= w;
                 }
             }, { passive: true });
 
