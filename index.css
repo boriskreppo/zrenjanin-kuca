@@ -420,6 +420,8 @@ img {
     flex-direction: column;
     justify-content: space-between;
     padding: clamp(16px, 2vw, 28px) clamp(16px, 2vw, 32px);
+    border-top: 1px solid #bfae9f;
+    color: #3f2419;
     transition: background-color 0.2s, color 0.2s;
     cursor: default;
 }

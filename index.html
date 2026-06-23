@@ -359,10 +359,29 @@
         /* =============================================
            GALERIJA — dodaj / ukloni fotografije ovde
            ============================================= */
-        // Galerija — drag scroll + strelice
+        // Galerija — infinite scroll + drag + strelice
         (function() {
             const track = document.querySelector('.gallery-images');
             if (!track) return;
+
+            // Kloniraj slike za infinite loop
+            const originals = Array.from(track.querySelectorAll('img'));
+            originals.forEach(img => track.appendChild(img.cloneNode(true)));
+            originals.forEach(img => track.insertBefore(img.cloneNode(true), track.firstChild));
+
+            const itemWidth = () => track.querySelector('img').offsetWidth + parseInt(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 8);
+            const setStart = () => { track.scrollLeft = itemWidth() * originals.length; };
+            setStart();
+
+            // Infinite loop na scroll
+            track.addEventListener('scroll', () => {
+                const w = itemWidth() * originals.length;
+                if (track.scrollLeft <= 0) {
+                    track.scrollLeft = w;
+                } else if (track.scrollLeft >= w * 2 - track.offsetWidth) {
+                    track.scrollLeft = w - track.offsetWidth;
+                }
+            }, { passive: true });
 
             // Drag scroll
             let isDown = false, startX, scrollLeft;
@@ -382,12 +401,11 @@
             });
 
             // Strelice
-            const imgWidth = () => track.querySelector('img').offsetWidth + parseInt(getComputedStyle(track).gap || 8);
             document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
-                track.scrollBy({ left: imgWidth(), behavior: 'smooth' });
+                track.scrollBy({ left: itemWidth(), behavior: 'smooth' });
             });
             document.querySelector('.arrow-back-btn').addEventListener('click', () => {
-                track.scrollBy({ left: -imgWidth(), behavior: 'smooth' });
+                track.scrollBy({ left: -itemWidth(), behavior: 'smooth' });
             });
         })();
 
