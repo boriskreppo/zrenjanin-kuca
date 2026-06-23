@@ -112,7 +112,7 @@
                     <h2 class="title" data-cms="osnovne_info.title"></h2>
                     <p class="body" data-cms="osnovne_info.body"></p>
                     <div class="section-2-img-wrapper">
-                        <img class="section2-img-icon" src="./Assets/Images/Section2-img.png"
+                        <img class="section2-img-icon" id="detalji-slika" src="./Assets/Images/Section2-img.png"
                             alt="Detalj enterijera kuće">
                     </div>
                 </div>
@@ -344,6 +344,12 @@
                         carousel.appendChild(img);
                     });
                     initHeroCarousel();
+                }
+
+                // Detalji slika
+                if (data.detalji && data.detalji.slika) {
+                    const el = document.getElementById('detalji-slika');
+                    if (el) el.src = data.detalji.slika;
                 }
             });
         })();

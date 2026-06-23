@@ -529,6 +529,7 @@ const SECTIONS = {
       { key: 'tekst2', label: 'Tekst 2', type: 'text' },
       { key: 'opremljenost_label', label: 'Opremljenost — labela', type: 'string' },
       { key: 'opremljenost_tekst', label: 'Opremljenost — tekst', type: 'string' },
+      { key: 'slika', label: 'Fotografija sekcije', type: 'image' },
     ],
   },
   lokacija: {
@@ -605,6 +606,18 @@ function renderForm(fileData, cfg, lang) {
           <label for="field-${f.key}">${f.label}</label>
           <textarea id="field-${f.key}" data-key="${f.key}">${content[f.key] || ''}</textarea>
         </div>`;
+    } else if (f.type === 'image') {
+      fields += `
+        <div class="form-field">
+          <label>${f.label}</label>
+          ${content[f.key] ? `<img id="img-preview-${f.key}" src="${content[f.key]}" style="width:100%;max-height:220px;object-fit:cover;border-radius:8px;margin-bottom:10px;display:block;">` : ''}
+          <div class="upload-area" id="upload-area-${f.key}" style="margin-bottom:0">
+            <input type="file" id="file-input-${f.key}" accept="image/*">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#bfae9f" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p>Kliknite da promenite fotografiju</p>
+          </div>
+          <input type="hidden" id="field-${f.key}" data-key="${f.key}" value="${val}">
+        </div>`;
     } else {
       fields += `
         <div class="form-field">
@@ -624,6 +637,49 @@ function renderForm(fileData, cfg, lang) {
 }
 
 function bindForm(fileData, cfg, lang) {
+  // Image upload polja
+  cfg.fields.filter(f => f.type === 'image').forEach(f => {
+    const area = document.getElementById(`upload-area-${f.key}`);
+    const input = document.getElementById(`file-input-${f.key}`);
+    const hidden = document.getElementById(`field-${f.key}`);
+    if (!area || !input) return;
+    area.addEventListener('click', () => input.click());
+    input.addEventListener('change', async () => {
+      const file = input.files[0];
+      if (!file) return;
+      if (file.size > 5 * 1024 * 1024) { showToast('Fajl je prevelik (max 5MB)', 'error'); return; }
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        area.querySelector('p').textContent = 'Otpremanje...';
+        try {
+          const res = await fetch('/api/admin-upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${state.token}` },
+            body: JSON.stringify({ filename: file.name, content: e.target.result }),
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'Greška.');
+          hidden.value = data.path;
+          const preview = document.getElementById(`img-preview-${f.key}`);
+          if (preview) { preview.src = data.path; }
+          else {
+            const img = document.createElement('img');
+            img.id = `img-preview-${f.key}`;
+            img.src = data.path;
+            img.style = 'width:100%;max-height:220px;object-fit:cover;border-radius:8px;margin-bottom:10px;display:block;';
+            area.parentElement.insertBefore(img, area);
+          }
+          area.querySelector('p').textContent = 'Kliknite da promenite fotografiju';
+          showToast('Fotografija otpremljena!');
+        } catch (err) {
+          area.querySelector('p').textContent = 'Kliknite da promenite fotografiju';
+          showToast(err.message, 'error');
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
   document.getElementById('save-btn')?.addEventListener('click', async () => {
     const btn = document.getElementById('save-btn');
     const errEl = document.getElementById('form-error');
