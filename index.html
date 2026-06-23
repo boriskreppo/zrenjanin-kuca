@@ -69,12 +69,7 @@
         <!-- HERO -->
         <section class="hero" id="hero" aria-label="Hero sekcija">
             <div class="hero-image-wrapper">
-                <div class="hero-carousel">
-                    <img class="hero-slide active" src="./Assets/Images/Hero-bg.png" alt="Pogled na luksuznu salonsku kuću u Zrenjaninu">
-                    <img class="hero-slide" src="./Assets/Images/Img-1-1.png" alt="Enterijer kuće">
-                    <img class="hero-slide" src="./Assets/Images/Img-2.png" alt="Enterijer kuće">
-                    <img class="hero-slide" src="./Assets/Images/Img.png" alt="Detalj kuće">
-                </div>
+                <div class="hero-carousel" id="hero-carousel"></div>
                 <div class="hero-overlay"></div>
                 <h1 class="hero-title" data-cms="hero.title"></h1>
                 <p class="hero-body" data-cms="hero.body"></p>
@@ -337,6 +332,19 @@
                         }
                     });
                 }
+
+                // Hero karusel iz JSON-a
+                if (data.hero && data.hero.slike && data.hero.slike.length) {
+                    const carousel = document.getElementById('hero-carousel');
+                    data.hero.slike.forEach((slika, i) => {
+                        const img = document.createElement('img');
+                        img.className = 'hero-slide' + (i === 0 ? ' active' : '');
+                        img.src = slika.src;
+                        img.alt = slika.alt || '';
+                        carousel.appendChild(img);
+                    });
+                    initHeroCarousel();
+                }
             });
         })();
 
@@ -484,18 +492,17 @@
         })();
 
         // Hero karusel
-        (function() {
+        function initHeroCarousel() {
             const slides = document.querySelectorAll('.hero-slide');
+            if (slides.length < 2) return;
             let current = 0;
-
             function goTo(index) {
                 slides[current].classList.remove('active');
                 current = (index + slides.length) % slides.length;
                 slides[current].classList.add('active');
             }
-
             setInterval(() => goTo(current + 1), 4000);
-        })();
+        }
     </script>
 </body>
 
