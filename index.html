@@ -412,10 +412,10 @@
 
             // Strelice
             document.querySelector('.arrow-forward-btn').addEventListener('click', () => {
-                track.scrollBy({ left: itemWidth(), behavior: 'smooth' });
+                track.scrollBy({ left: getItemWidth(), behavior: 'smooth' });
             });
             document.querySelector('.arrow-back-btn').addEventListener('click', () => {
-                track.scrollBy({ left: -itemWidth(), behavior: 'smooth' });
+                track.scrollBy({ left: -getItemWidth(), behavior: 'smooth' });
             });
         }
 
