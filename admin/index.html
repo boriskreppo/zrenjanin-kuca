@@ -4,9 +4,119 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CMS — Zrenjanin Kuća</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+    CMS.init({
+        config: {
+            backend: {
+                name: 'github',
+                repo: 'boriskrepko/zrenjanin-kuca',
+                branch: 'main',
+                base_url: 'https://api.netlify.com',
+                auth_endpoint: 'auth'
+            },
+            media_folder: 'Assets/Images',
+            public_folder: '/Assets/Images',
+            locale: 'sr',
+            collections: [
+                {
+                    name: 'sadrzaj',
+                    label: 'Sadržaj stranice',
+                    files: [
+                        {
+                            name: 'hero',
+                            label: 'Hero sekcija',
+                            file: '_data/hero.json',
+                            fields: [
+                                { label: 'Naslov', name: 'title', widget: 'string' },
+                                { label: 'Opis', name: 'body', widget: 'text' }
+                            ]
+                        },
+                        {
+                            name: 'hero_stats',
+                            label: 'Hero statistike',
+                            file: '_data/hero_stats.json',
+                            fields: [
+                                { label: 'Lokacija', name: 'lokacija', widget: 'string' },
+                                { label: 'Površina nekretnine', name: 'povrsina_nekretnine', widget: 'string' },
+                                { label: 'Površina placa', name: 'povrsina_placa', widget: 'string' },
+                                { label: 'Broj prostorija', name: 'broj_prostorija', widget: 'string' },
+                                { label: 'Broj garažnih mesta', name: 'garaza', widget: 'string' },
+                                { label: 'Cena', name: 'cena', widget: 'string' }
+                            ]
+                        },
+                        {
+                            name: 'osnovne_info',
+                            label: 'Osnovne informacije',
+                            file: '_data/osnovne_info.json',
+                            fields: [
+                                { label: 'Naslov', name: 'title', widget: 'string' },
+                                { label: 'Opis', name: 'body', widget: 'text' },
+                                { label: 'Broj prostorija', name: 'broj_prostorija', widget: 'string' },
+                                { label: 'Letnjikovac', name: 'letnjikovac', widget: 'string' },
+                                { label: 'Broj spavaćih soba', name: 'spavace_sobe', widget: 'string' },
+                                { label: 'Broj paunova', name: 'paunovi', widget: 'string' }
+                            ]
+                        },
+                        {
+                            name: 'galerija',
+                            label: 'Galerija',
+                            file: '_data/galerija.json',
+                            fields: [
+                                { label: 'Naslov', name: 'title', widget: 'string' },
+                                { label: 'Opis', name: 'body', widget: 'text' },
+                                {
+                                    name: 'slike', label: 'Slike', widget: 'list',
+                                    fields: [
+                                        { label: 'Slika', name: 'src', widget: 'image' },
+                                        { label: 'Opis slike (alt)', name: 'alt', widget: 'string' }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            name: 'detalji',
+                            label: 'Detaljnije o kući',
+                            file: '_data/detalji.json',
+                            fields: [
+                                { label: 'Naslov', name: 'title', widget: 'string' },
+                                { label: 'Tekst 1', name: 'tekst1', widget: 'text' },
+                                { label: 'Tekst 2', name: 'tekst2', widget: 'text' },
+                                { label: 'Opremljenost — label', name: 'opremljenost_label', widget: 'string' },
+                                { label: 'Opremljenost — tekst', name: 'opremljenost_tekst', widget: 'string' }
+                            ]
+                        },
+                        {
+                            name: 'lokacija',
+                            label: 'O Zrenjaninu',
+                            file: '_data/lokacija.json',
+                            fields: [
+                                { label: 'Naslov', name: 'title', widget: 'string' },
+                                { label: 'Opis', name: 'body', widget: 'text' },
+                                { label: 'CTA tekst', name: 'cta', widget: 'string' },
+                                { label: 'Broj stanovnika', name: 'stanovnici', widget: 'string' },
+                                { label: 'Broj manifestacija', name: 'manifestacije', widget: 'string' },
+                                { label: 'Vebsajt', name: 'website', widget: 'string' }
+                            ]
+                        },
+                        {
+                            name: 'kontakt',
+                            label: 'Kontakt',
+                            file: '_data/kontakt.json',
+                            fields: [
+                                { label: 'Naslov', name: 'title', widget: 'string' },
+                                { label: 'Opis', name: 'body', widget: 'text' },
+                                { label: 'Email', name: 'email', widget: 'string' },
+                                { label: 'Telefon', name: 'telefon', widget: 'string' }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    });
+    </script>
 </body>
 </html>
