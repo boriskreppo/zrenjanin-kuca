@@ -195,30 +195,11 @@ img {
     opacity: 1;
 }
 
-.hero-dots {
+.hero-overlay {
     position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 2;
-}
-
-.hero-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.hero-dot.active {
-    background: #fff;
-    transform: scale(1.3);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.40);
+    z-index: 1;
 }
 
 .hero-title {
@@ -1004,10 +985,6 @@ img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
-
-    .hero-dots {
-        bottom: 140px;
     }
 
     .hero-title {

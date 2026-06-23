@@ -75,12 +75,7 @@
                     <img class="hero-slide" src="./Assets/Images/Img-2.png" alt="Enterijer kuće">
                     <img class="hero-slide" src="./Assets/Images/Img.png" alt="Detalj kuće">
                 </div>
-                <div class="hero-dots">
-                    <button class="hero-dot active" data-index="0" aria-label="Slika 1"></button>
-                    <button class="hero-dot" data-index="1" aria-label="Slika 2"></button>
-                    <button class="hero-dot" data-index="2" aria-label="Slika 3"></button>
-                    <button class="hero-dot" data-index="3" aria-label="Slika 4"></button>
-                </div>
+                <div class="hero-overlay"></div>
                 <h1 class="hero-title" data-cms="hero.title"></h1>
                 <p class="hero-body" data-cms="hero.body"></p>
             </div>
@@ -491,22 +486,15 @@
         // Hero karusel
         (function() {
             const slides = document.querySelectorAll('.hero-slide');
-            const dots = document.querySelectorAll('.hero-dot');
             let current = 0;
 
             function goTo(index) {
                 slides[current].classList.remove('active');
-                dots[current].classList.remove('active');
                 current = (index + slides.length) % slides.length;
                 slides[current].classList.add('active');
-                dots[current].classList.add('active');
             }
 
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
-            });
-
-            setInterval(() => goTo(current + 1), 2000);
+            setInterval(() => goTo(current + 1), 4000);
         })();
     </script>
 </body>
