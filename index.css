@@ -74,7 +74,7 @@ img {
     z-index: 100;
     display: flex;
     align-items: center;
-    gap: clamp(16px, 3vw, 40px);
+    gap: clamp(4px, 1.5vw, 40px);
 }
 
 .nav-bg {
@@ -95,7 +95,7 @@ img {
     line-height: 16px;
     color: #fff;
     white-space: nowrap;
-    padding-inline: clamp(4px, 1.2vw, 16px);
+    padding-inline: clamp(2px, 0.8vw, 12px);
     transition: opacity 0.2s;
     flex-shrink: 1;
 }
@@ -996,6 +996,30 @@ img {
     grid-column: 2;
     display: flex;
     flex-direction: column;
+}
+
+/* =============================================
+   TABLET — max-width: 1024px
+   ============================================= */
+@media (max-width: 1024px) {
+    .navigation-item-1,
+    .navigation-item-2,
+    .navigation-item-3,
+    .navigation-item-4 {
+        display: none;
+    }
+
+    .nav-hamburger {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-call {
+        margin-left: auto;
+    }
 }
 
 /* =============================================
