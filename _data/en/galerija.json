@@ -2,11 +2,13 @@
   "title": "Gallery",
   "body": "Explore the interior and exterior of this unique property with its one-of-a-kind artistic furniture.",
   "slike": [
-    { "src": "/Assets/Images/Img-1-1.png", "alt": "Interior photo — view 1" },
-    { "src": "/Assets/Images/Img-2.png", "alt": "Interior photo — view 2" },
-    { "src": "/Assets/Images/Img-1-1.png", "alt": "Interior photo — view 3" },
-    { "src": "/Assets/Images/Img-2.png", "alt": "Interior photo — view 4" },
-    { "src": "/Assets/Images/Img-1-1.png", "alt": "Interior photo — view 5" },
-    { "src": "/Assets/Images/Img-2.png", "alt": "Interior photo — view 6" }
+    {
+      "src": "/Assets/Images/Img-1-1.png",
+      "alt": "Interior photo — view 1"
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-15.jpg",
+      "alt": ""
+    }
   ]
 }
