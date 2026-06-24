@@ -95,8 +95,9 @@ img {
     line-height: 16px;
     color: #fff;
     white-space: nowrap;
-    padding-inline: clamp(8px, 1.2vw, 16px);
+    padding-inline: clamp(4px, 1.2vw, 16px);
     transition: opacity 0.2s;
+    flex-shrink: 1;
 }
 
 .navigation-item-1 {
@@ -116,9 +117,9 @@ img {
     font-weight: 700;
     line-height: 16px;
     color: #fff;
-    margin-left: auto;
     white-space: nowrap;
     padding-inline: clamp(8px, 1.2vw, 16px);
+    flex-shrink: 0;
     transition: opacity 0.2s;
 }
 
@@ -133,6 +134,8 @@ img {
     color: #fff;
     white-space: nowrap;
     padding-right: clamp(12px, 1.5vw, 16px);
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 .nav-hamburger {
