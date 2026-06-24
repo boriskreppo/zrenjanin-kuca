@@ -2,9 +2,33 @@
   "title": "Title goes here",
   "body": "Emerging from the cacti and scrubby green brush of Puerto Escondido on the Oaxacan coast, a spaceshiplike form touches down lightly on the land.",
   "slike": [
-    { "src": "/Assets/Images/Hero-bg.png", "alt": "View of a luxury mansion in Zrenjanin" },
-    { "src": "/Assets/Images/Img-1-1.png", "alt": "Interior of the house" },
-    { "src": "/Assets/Images/Img-2.png", "alt": "Interior of the house" },
-    { "src": "/Assets/Images/Img.png", "alt": "Detail of the house" }
+    {
+      "src": "/Assets/Images/Hero-bg.png",
+      "alt": "View of a luxury mansion in Zrenjanin"
+    },
+    {
+      "src": "/Assets/Images/Img-1-1.png",
+      "alt": "Interior of the house"
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-15.jpg",
+      "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-12.jpg",
+      "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-11.jpg",
+      "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-08.jpg",
+      "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-07.jpg",
+      "alt": ""
+    }
   ]
 }
