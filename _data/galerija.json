@@ -3,23 +3,31 @@
   "body": "Pogledajte unutrašnjost i eksterijer ove jedinstvene nekretnine sa unikatnim umetničkim nameštajem.",
   "slike": [
     {
-      "src": "/Assets/Images/house-1.jpg",
-      "alt": ""
-    },
-    {
       "src": "/Assets/Images/Img-1-1.png",
       "alt": "Fotografija enterijera kuće — pogled 1"
     },
     {
-      "src": "/Assets/Images/Img-2.png",
-      "alt": "Fotografija enterijera kuće — pogled 2"
-    },
-    {
-      "src": "/Assets/Images/house-2.jpg",
+      "src": "/Assets/Images/Hero-bg.png",
       "alt": ""
     },
     {
-      "src": "/Assets/Images/Hero-bg.png",
+      "src": "/Assets/Images/Kuca_625-15.jpg",
+      "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-12.jpg",
+      "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-11.jpg",
+      "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-08.jpg",
+      "alt": ""
+    },
+    {
+      "src": "/Assets/Images/Kuca_625-07.jpg",
       "alt": ""
     }
   ]
